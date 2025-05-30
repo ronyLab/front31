@@ -1,34 +1,38 @@
+<div style="padding: 2rem;">
 
-<div class="header-actions">
-      <h2>Lista de Clientes</h2>
-      <a mat-raised-button color="primary" routerLink="/clientes/novo">
-        Novo Cliente
-      </a>
-    </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <h2 style="margin: 0;">Lista de Clientes</h2>
+    <a mat-raised-button color="primary" routerLink="/clientes/novo">
+      + Novo Cliente
+    </a>
+  </div>
 
-    <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
-      <!-- Coluna Nome -->
-      <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef>Nome</th>
-        <td mat-cell *matCellDef="let cliente">{{cliente.nome}}</td>
-      </ng-container>
+  <table mat-table [dataSource]="clientes" class="mat-elevation-z8" style="width: 100%; border-radius: 8px; overflow: hidden; font-size: 14px;">
 
-      <!-- Coluna CPF -->
-      <ng-container matColumnDef="cpf">
-        <th mat-header-cell *matHeaderCellDef>CPF</th>
-        <td mat-cell *matCellDef="let cliente">{{cliente.cpf}}</td>
-      </ng-container>
+    <!-- Coluna Nome -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef style="background: #383839; font-weight: bold;">Nome</th>
+      <td mat-cell *matCellDef="let cliente" style="vertical-align: middle;">{{ cliente.nome }}</td>
+    </ng-container>
 
-      <!-- Coluna Ações -->
-      <ng-container matColumnDef="acoes">
-        <th mat-header-cell *matHeaderCellDef>Ações</th>
-        <td mat-cell *matCellDef="let cliente">
-          <a mat-button color="primary" [routerLink]="['/clientes/editar', cliente.id]">
-            Editar
-          </a>
-        </td>
-      </ng-container>
+    <!-- Coluna CPF -->
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef style="background: #383839; font-weight: bold;">CPF</th>
+      <td mat-cell *matCellDef="let cliente" style="vertical-align: middle;">{{ cliente.cpf }}</td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <!-- Coluna Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef style="background: #383839; font-weight: bold;">Ações</th>
+      <td mat-cell *matCellDef="let cliente" style="vertical-align: middle;">
+        <a mat-button color="primary" [routerLink]="['/clientes/editar', cliente.id]">
+          Editar
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+</div>

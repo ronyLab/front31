@@ -70,7 +70,7 @@ export class ReservaFormComponent implements OnInit {
  salvar(): void {
   if (this.form.valid) {
     const reservaData = {
-      id: 0, // necessário para a API
+      id: 0,
       placaVeiculo: this.form.value.placaVeiculo,
       cpfCliente: this.form.value.cpfCliente,
       dataInicio: new Date(this.form.value.dataInicio).toISOString(),

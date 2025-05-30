@@ -34,27 +34,28 @@ export class VeiculoListComponent implements OnInit {
   carregarVeiculos(): void {
     this.service.listar().subscribe({
       next: (data) => this.veiculos = data,
-      error: () => this.snackBar.open('Erro ao carregar!', 'Fechar', { duration: 3000 })
+      error: () => this.snackBar.open('Erro ao carregar veículos!', 'Fechar', { duration: 3000 })
     });
   }
 
-  alugar(veiculo: Veiculo): void {
-    this.service.alugar(veiculo.placa).subscribe({
-      next: () => {
-        this.snackBar.open('Veículo alugado!', 'Fechar', { duration: 3000 });
-        this.carregarVeiculos();
-      },
-      error: () => this.snackBar.open('Erro ao alugar!', 'Fechar', { duration: 3000 })
-    });
-  }
-
-  devolver(veiculo: Veiculo): void {
-    this.service.devolver(veiculo.placa).subscribe({
-      next: () => {
-        this.snackBar.open('Veículo devolvido!', 'Fechar', { duration: 3000 });
-        this.carregarVeiculos();
-      },
-      error: () => this.snackBar.open('Erro ao devolver!', 'Fechar', { duration: 3000 })
-    });
-  }
+alugar(veiculo: Veiculo): void {
+  this.service.alugar(veiculo.placa).subscribe({
+    next: () => {
+      this.snackBar.open('Veículo alugado com sucesso!', 'Fechar', { duration: 3000 });
+      this.carregarVeiculos();
+    },
+    error: () => this.snackBar.open('Erro ao alugar veículo!', 'Fechar', { duration: 3000 })
+  });
 }
+
+devolver(veiculo: Veiculo): void {
+  this.service.devolver(veiculo.placa).subscribe({
+    next: () => {
+      this.snackBar.open('Veículo devolvido com sucesso!', 'Fechar', { duration: 3000 });
+      this.carregarVeiculos();
+    },
+    error: () => this.snackBar.open('Erro ao devolver veículo!', 'Fechar', { duration: 3000 })
+  });
+}
+
+  }

@@ -23,7 +23,6 @@ export class ClienteListComponent {
     this.service.listar().subscribe({
       next: (clientes) => {
         this.clientes = clientes;
-        console.log('Clientes carregados:', clientes); // Verifique no console
       },
       error: (err) => {
         console.error('Erro ao carregar clientes:', err);

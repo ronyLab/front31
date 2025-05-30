@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="dark-card">
   <mat-card-header>
-    <mat-card-title>Cadastrar Veículo</mat-card-title>
+    <mat-card-title class="white-title">Cadastrar Veículo</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="salvar()">
@@ -40,3 +40,31 @@
     </form>
   </mat-card-content>
 </mat-card>
+
+<style>
+.dark-card {
+  background-color: #2b2b2b;
+  color: hwb(0 7% 39%);
+}
+
+.white-title {
+  color: white !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  color: white !important;
+}
+
+mat-select,
+input[matInput] {
+  color: white !important;
+}
+
+.mat-select-arrow {
+  color: white;
+}
+</style>
