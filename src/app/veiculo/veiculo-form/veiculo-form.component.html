@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Cadastrar Veículo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Modelo</mat-label>
+        <input matInput formControlName="modelo">
+        <mat-error *ngIf="form.get('modelo')?.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="marca">
+        <mat-error *ngIf="form.get('marca')?.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Ano</mat-label>
+        <input matInput type="number" formControlName="ano">
+        <mat-error *ngIf="form.get('ano')?.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Placa</mat-label>
+        <input matInput formControlName="placa" placeholder="ABC1D23">
+        <mat-error *ngIf="form.get('placa')?.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Diária (R$)</mat-label>
+        <input matInput type="number" formControlName="diaria">
+        <mat-error *ngIf="form.get('diaria')?.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Salvar
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

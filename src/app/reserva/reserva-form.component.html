@@ -1,0 +1,50 @@
+<div style="padding: 20px;">
+      <h2>Nova Reserva</h2>
+
+      <form [formGroup]="form" (ngSubmit)="salvar()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Veículo</mat-label>
+          <mat-select formControlName="placaVeiculo" required>
+            <mat-option *ngFor="let veiculo of veiculosDisponiveis" [value]="veiculo.placa">
+              {{ veiculo.modelo }} - {{ veiculo.placa }} ({{ veiculo.diaria | currency:'BRL' }}/dia)
+            </mat-option>
+          </mat-select>
+          <mat-error>Selecione um veículo</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Cliente</mat-label>
+          <mat-select formControlName="cpfCliente" required>
+            <mat-option *ngFor="let cliente of clientes" [value]="cliente.cpf">
+              {{ cliente.nome }} ({{ cliente.cpf }})
+            </mat-option>
+          </mat-select>
+          <mat-error>Selecione um cliente</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Data de Início</mat-label>
+          <input matInput [matDatepicker]="inicioPicker" formControlName="dataInicio" required>
+          <mat-datepicker-toggle matSuffix [for]="inicioPicker"></mat-datepicker-toggle>
+          <mat-datepicker #inicioPicker></mat-datepicker>
+          <mat-error>Informe a data de início</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Data de Fim</mat-label>
+          <input matInput [matDatepicker]="fimPicker" formControlName="dataFim" required>
+          <mat-datepicker-toggle matSuffix [for]="fimPicker"></mat-datepicker-toggle>
+          <mat-datepicker #fimPicker></mat-datepicker>
+          <mat-error>Informe a data de fim</mat-error>
+        </mat-form-field>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+          <button mat-raised-button color="warn" type="button" routerLink="/reservas" style="margin-right: 10px;">
+            Cancelar
+          </button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            Salvar Reserva
+          </button>
+        </div>
+      </form>
+    </div>
